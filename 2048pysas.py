@@ -12,7 +12,10 @@ def getch():
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
 def  clear():
-    _ = system('clear')
+    if name=="nt":
+        _ =system('cls')
+    else:
+        _ = system('clear')
 import getpass
 import random
 h=[]
