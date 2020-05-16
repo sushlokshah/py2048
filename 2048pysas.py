@@ -2,17 +2,19 @@ from os import system,name
 from time import sleep
 if name =="nt":
     import msvcrt
-def getch():
-    import sys
-    import tty
-    import termios
-    fd = sys.stdin.fileno()
-    old = termios.tcgetattr(fd)
-    try:
-        tty.setraw(fd)
-        return sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old)
+else:
+    def getch():
+        import sys
+        import tty
+        import termios
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            return sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
 def  clear():
     if name =="nt":
         _ =system('cls')
@@ -155,6 +157,8 @@ def move(k,n,dir):
 def getinput():
     if name =="nt":
         dir=msvcrt.getch()
+        char=dir[0]
+        dir=chr(char)
     else:
         dir=getch()
     return dir
