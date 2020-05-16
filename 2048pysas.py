@@ -15,9 +15,7 @@ def  clear():
     _ = system('clear')
 import getpass
 import random
-k=[]
-me=[]
-per=[]
+h=[]
 def matrixsize():
     global n
     n=int(input("enter the size of matrix"))
@@ -62,6 +60,13 @@ def randomplace(k,n):
     else:
         randomplace(k,n)
 def move(k,n,dir):
+    global z
+    z=[]
+    for i in range(n):
+        s=[]
+        for j in range(n):
+            s.append(k[i][j])
+        z.append(s)
 
     if dir=="d"or dir=="D":
         for i in range(n):
@@ -132,7 +137,10 @@ def move(k,n,dir):
                      for p in range(0,n-j-2):
                          k[n-j-2-p][i]=k[n-j-3-p][i]
                      k[0][i]=0
-
+    global check
+    check=0
+    if z==k:
+        check=check+1
 
     print("\n")
 def getinput():
@@ -142,18 +150,19 @@ condition="play"
 while(condition=="play"):
     n=matrixsize()
     p=callengenum()
-    h=[0]
     count=0
+    h=[0]
+    mat=[]
     for i in range(n):
         s=[]
         for j in range(n):
             s.append(0)
-        k.append(s)
+        mat.append(s)
     while count<1:
         if  n==1:
-            k[0][0]=2*random.randrange(1,3)
-            myprint(k,n)
-            if p==k[0][0]:
+            mat[0][0]=2*random.randrange(1,3)
+            myprint(mat,n)
+            if p==mat[0][0]:
                 print("congratulation you won")
                 print("replay or quit")
                 m=str(input())
@@ -178,39 +187,49 @@ while(condition=="play"):
         if  n==2:
             x=random.randrange(0,n)
             y=random.randrange(0,n)
-            k[x][y]=2
+            mat[x][y]=2
             count=count+1
 
         if n>2:
             for i in range(2):
                 x=random.randrange(0,n)
                 y=random.randrange(0,n)
-                k[x][y]=2*random.randrange(1,3)
+                mat[x][y]=2*random.randrange(1,3)
                 count=count+1
     if n!=1:
-        myprint(k,n)
+        myprint(mat,n)
     max=0
     index=0
     while p>max and n!=1:
-        h=k
+        h=mat
+        """for i in range(n):
+            s=[]
+            for j in range(n):
+                s.append(0)
+            pre.append(s)
+        for i in range(n):
+            for j in range(n):
+                pre[i][j]=mat[i][j]"""
+
         dir=getinput()
         clear()
-        move(k,n,dir)
+
+        move(mat,n,dir)
         sushlok=0
         poco=0
         for i in range(n):
             for j in range(n):
-                if k[i][j]==0:
+                if mat[i][j]==0:
                     sushlok=sushlok+1
                     poco=poco+1
         for i in range(n):
             for j in range(n-1):
-                if k[i][j]==k[i][j+1]:
+                if mat[i][j]==mat[i][j+1]:
                     sushlok= sushlok+1
-                if k[j][i]==k[j+1][i]:
+                if mat[j][i]==mat[j+1][i]:
                     sushlok=sushlok+1
-        if h==k and sushlok==0:
-            myprint(k,n)
+        if h==mat and sushlok==0:
+            myprint(mat,n)
             print("game over")
             print("replay or quit")
             m=str(input())
@@ -222,13 +241,15 @@ while(condition=="play"):
                 break
         else :
             if dir=="w"or dir=="a" or dir=="s" or dir=="d" or dir=="W" or dir=="A" or dir=="S"or dir=="D":
-                if poco!=0:
-                    randomplace(k,n)
+                if poco!=0 and check==0:
+                    randomplace(mat,n)
+                    check=0
             else:
                 print("invalid input")
-        myprint(k,n)
+                check=0
+        myprint(mat,n)
         print("\n")
-        max=maxnum(k,n)
+        max=maxnum(mat,n)
         if p==max:
             print("congratulation you won")
             print("replay or quit")
