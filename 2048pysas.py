@@ -16,6 +16,7 @@ def  clear():
 import getpass
 import random
 h=[]
+pre=[]
 def matrixsize():
     global n
     n=int(input("enter the size of matrix"))
@@ -202,15 +203,6 @@ while(condition=="play"):
     index=0
     while p>max and n!=1:
         h=mat
-        """for i in range(n):
-            s=[]
-            for j in range(n):
-                s.append(0)
-            pre.append(s)
-        for i in range(n):
-            for j in range(n):
-                pre[i][j]=mat[i][j]"""
-
         dir=getinput()
         clear()
 
