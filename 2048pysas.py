@@ -1,5 +1,7 @@
 from os import system,name
 from time import sleep
+if name =="nt":
+    import msvcrt
 def getch():
     import sys
     import tty
@@ -12,7 +14,7 @@ def getch():
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
 def  clear():
-    if name=="nt":
+    if name =="nt":
         _ =system('cls')
     else:
         _ = system('clear')
@@ -57,7 +59,10 @@ def randomplace(k,n):
     x=random.randrange(0,n)
     y=random.randrange(0,n)
     if k[x][y]==0:
-        k[x][y]=2*random.randrange(1,3)
+        if n==2:
+            k[x][y]=2
+        else:
+            k[x][y]=2*random.randrange(1,3)
         ajay=x
         shah=y
 
@@ -148,7 +153,10 @@ def move(k,n,dir):
 
     print("\n")
 def getinput():
-    dir=getch()
+    if name =="nt":
+        dir=msvcrt.getch()
+    else:
+        dir=getch()
     return dir
 condition="play"
 while(condition=="play"):
