@@ -35,7 +35,7 @@ def matrixsize():
 
 def callengenum():
     global p
-    p=int(input("callenge no."))
+    p=int(input("challenge no."))
     po=0
     while(p>2**po):
         po=po+1
