@@ -218,7 +218,21 @@ while(condition=="play"):
     index=0
     while p>max and n!=1:
         h=mat
-        dir=getinput()
+        sushlok=0
+        poco=0
+        for i in range(n):
+            for j in range(n):
+                if mat[i][j]==0:
+                    sushlok=sushlok+1
+                    poco=poco+1
+        for i in range(n):
+            for j in range(n-1):
+                if mat[i][j]==mat[i][j+1]:
+                    sushlok= sushlok+1
+                if mat[j][i]==mat[j+1][i]:
+                    sushlok=sushlok+1
+        if sushlok!=0:
+            dir=getinput()
         clear()
 
         move(mat,n,dir)
