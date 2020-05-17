@@ -24,6 +24,7 @@ import getpass
 import random
 h=[]
 pre=[]
+
 def matrixsize():
     global n
     n=int(input("enter the size of matrix"))
@@ -31,6 +32,7 @@ def matrixsize():
         print("enter the no.greater than'0' ")
         matrixsize()
     return n
+
 def callengenum():
     global p
     p=int(input("callenge no."))
@@ -41,11 +43,13 @@ def callengenum():
         print("enter the no.greater than'0'and no. must be power of '2' ")
         callengenum()
     return p
+
 def myprint(k,n):
     for i in range(n):
         for j in range(n):
             print(k[i][j],"\t",end="")
         print()
+
 def maxnum(k,n):
     global x
     x=0
@@ -55,6 +59,7 @@ def maxnum(k,n):
                 x=k[i][j]
 
     return x
+
 def randomplace(k,n):
     global ajay
     global shah
