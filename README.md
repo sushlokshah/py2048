@@ -223,7 +223,7 @@ function for getting input (w,a,s,d)
  <img src="images/Screenshot_2020-05-17_08-36-38.png" >
   <img src="images/Screenshot_2020-05-17_08-36-58.png" >
 5) after getting the terms it will display matrix with random 2’s or 4’s <br />
-
+   for matrix of size "1" it will take input and it will compare the given no. with the random no. and then it will display "win" condition if given no. is same as the random no. 
   <img src="images/Screenshot_2020-05-17_08-38-16.png" >
 6) depending upon direction move function will move the matrix <br />
  
